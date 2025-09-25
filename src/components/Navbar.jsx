@@ -1,4 +1,4 @@
-//import { usePathname } from 'next/navigation'
+import { useLocation } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import NavOpenSvg from './NavOpenSvg'
 import LogoText from './LogoText'
@@ -25,8 +25,7 @@ function Navbar() {
   ]
 
   const [isOpen, setIsOpen] = useState(false)
-  //const pathName = usePathname()
-  const pathName = "/xyz"
+  const location = useLocation()
 
   useEffect(() => {
     const nav = document.querySelector('nav')
@@ -50,7 +49,7 @@ function Navbar() {
       headerObserver.observe(header)
     }
     setIsOpen(false)
-  }, [pathName])
+  }, [location.pathname])
 
   return (
     <nav className='w-full fixed top-0 z-20 text-white transition-colors nav-middle'>
